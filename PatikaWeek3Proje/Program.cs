@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.Design;
 
 Console.WriteLine("Merhaba hoşgeldiniz");
-Console.WriteLine("3 adet proramımız avr hangisini kullanmak istiyorsunuz");
+Console.WriteLine("3 adet proramımız var hangisini kullanmak istiyorsunuz");
 Console.WriteLine("1- Rastgele Sayı Bulma Oyunu \n2- Hesap Makinesi \n3- Ortalama Hesaplama ");
 string seçim = Console.ReadLine().ToLower().Trim(); //Herhangi küçük veya büyük harf uyumsuzluğunu önlemek için bütün harfleri küçük harf kullanacak ve baştali sayıların girilmesi durumunda anlaması için de trim kullandım
 
@@ -22,7 +22,7 @@ else
     Console.WriteLine("Geçerisiz program girdiniz");
 }
 
-void RandomNumberGame()// rastgele sayı bulma oynu döngüsü
+void RandomNumberGame()// Rastgele sayı bulma oynu döngüsü
 {
     Random rnd= new Random();
     Console.WriteLine("Merhaba oyuna hoşgeldiniz ");
@@ -30,45 +30,30 @@ void RandomNumberGame()// rastgele sayı bulma oynu döngüsü
     Console.WriteLine("Lütfen tahmininizi giriniz");
     Console.WriteLine("Doğru tahmin yapmak için 5 tahmın hakkınız var ");
     
-    int RandomNumber=rnd.Next(1,101);
+    int randomNumber=rnd.Next(1,101);
     
 
 
 
     for (int i = 1; i <= 5; i++)// 5 defa dönmesi için for döngüsü oluşturdum
     {
-        int life = 5 - i;// kalan can hakkını göstermesi için tanımlandı
+        int life = 5 - i;// Kalan can hakkını göstermesi için tanımlandı
 
-        int EnteredNumber = Convert.ToInt32(Console.ReadLine());
+        int enteredNumber = Convert.ToInt32(Console.ReadLine());
 
         Console.WriteLine("Kalan canınız------->" +life);
 
-        if (RandomNumber < EnteredNumber)
-        {
-            Console.WriteLine("Daha küçük bir sayı giriniz.Lütfen tekrar sayı giriniz ");
-
-            
-            
-            
-        }
-        else if (EnteredNumber < RandomNumber) 
-        {
+        if (randomNumber < enteredNumber)
+            Console.WriteLine("Daha küçük bir sayı giriniz.Lütfen tekrar sayı girniz");
+        else if (enteredNumber < randomNumber)
             Console.WriteLine("Daha büyük bir sayı giriniz.Lütfen tekrar sayı giriniz");
-            
-            
-            
-        }
         else
-        {
-            Console.WriteLine("Tebrikler yarışmayı kazandınız");
-            break;// break yazarak bu koşulun sağlanamsı halinde döngü son bulacak 
-        }
-
+            Console.WriteLine("Tebrikler yarışmayı kazandınız ");
+        if (randomNumber != enteredNumber && i == 5)
+            Console.WriteLine("Yarışmayı kaybettiniz ");
         
     }
-    Console.WriteLine("Yarışmayı kaybettiniz bizim sayımız----->" +RandomNumber);
-    return ;
-        
+    
 }
 
 double Calculator() //Hesap makinesi
@@ -86,7 +71,7 @@ char process= Convert.ToChar(Console.ReadLine());
 if (process == '+')
 {
     double conclusion = number1 + number2;
-    Console.WriteLine("Yapmış olduğunuz işlemin sonucu" + conclusion);
+    Console.WriteLine("Yapmış olduğunuz işlemin sonucu-------->" + conclusion);
 
 
 }
@@ -98,9 +83,9 @@ else if (process == '-')
 }
 else if (process=='/') 
 {
-    if (number2 == 0)// bölenin sıfır olası durumda tanımsız olacağı için 0 durumunu değerlendiriyoruz 
+    if (number2 == 0)// Bölenin sıfır olası durumda tanımsız olacağı için 0 durumunu değerlendiriyoruz 
     {
-        Console.WriteLine("bölme işleminde 2. sayı 0 a eşit olnunca tanımsız işlem olur bu işlem yapılamaz");
+        Console.WriteLine("Bölme işleminde 2. sayı 0 a eşit olnunca tanımsız işlem olur bu işlem yapılamaz");
     }
     else
     {
@@ -132,19 +117,19 @@ void AverageCalculation()// Not ortalaması hesaplama
     Console.WriteLine("Lütfen 3.sınav notunu giriniz.");
     double exam3= Convert.ToDouble(Console.ReadLine());
 
-    if (exam1>100 || 0> exam1)// sınav notunun geçersiz olduğu durumu değerlendirirken aralıkları veya bağlacı ile bağlayak ikiş durumda değerlendirildi 
+    if (exam1>100 || 0> exam1)// Sınav notunun geçersiz olduğu durumu değerlendirirken aralıkları veya bağlacı ile bağlayak iki durumda değerlendirildi 
     {
         Console.WriteLine("Girmiş olduğunuz 1. sınav notu geçersizdir programı sonlanıdrıyorum.");
         return;
     }
     else if(exam2>100 || exam2<0)
      {
-        Console.WriteLine("Girmiş olduğunuz 2. sınav notu geçersizdirprogramı sonlandırıyorum");
+        Console.WriteLine("Girmiş olduğunuz 2. sınav notu geçersizdir programı sonlandırıyorum");
         return;
     }
     else if (exam3<0 || exam3 > 100)
     {
-        Console.WriteLine("Girmiş olduğunuz 3. sınav notu geçersizdir");
+        Console.WriteLine("Girmiş olduğunuz 3. sınav notu geçersizdir programı sonlandırıyorum");
         return;
     }
     else
@@ -158,7 +143,7 @@ void AverageCalculation()// Not ortalaması hesaplama
     {
         Console.WriteLine("Not ortalamanızın harf karşılığı ------> AA");
     }
-    else if (average >= 85 && average < 90)
+    else if (average <90 && average >=85)
     {
         Console.WriteLine("Not ortalamanızın harf karşılığı ------> BA");
     }
